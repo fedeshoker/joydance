@@ -5,7 +5,7 @@ from typing import Optional, Tuple
 import hid
 
 from .constants import (JOYCON_L_PRODUCT_ID, JOYCON_PRODUCT_IDS,
-                        JOYCON_R_PRODUCT_ID, JOYCON_VENDOR_ID)
+                        JOYCON_R_PRODUCT_ID, JOYCON_PRO_PRODUCT_ID, JOYCON_VENDOR_ID)
 
 # TODO: disconnect, power off sequence
 
@@ -240,6 +240,9 @@ class JoyCon:
 
     def is_right(self):
         return self.product_id == JOYCON_R_PRODUCT_ID
+
+    def is_pro(self):
+        return self.product_id == JOYCON_PRO_PRODUCT_ID
 
     def get_battery_charging(self):
         return self._get_nbit_from_input_report(2, 4, 1)
